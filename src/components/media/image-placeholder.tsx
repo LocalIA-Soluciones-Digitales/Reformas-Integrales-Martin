@@ -145,6 +145,8 @@ interface ImagePlaceholderProps {
    * perfectly static image to stay accurate.
    */
   kenBurns?: "cinematic" | "subtle" | "none";
+  /** "contain" shows the full photo (letterboxed) instead of cropping to fill. */
+  fit?: "cover" | "contain";
 }
 
 export function ImagePlaceholder({
@@ -155,6 +157,7 @@ export function ImagePlaceholder({
   priority = false,
   sizes = "100vw",
   kenBurns = "none",
+  fit = "cover",
 }: ImagePlaceholderProps) {
   const { icon: Icon, from, via, to, label, code } = CONFIG[placeholder];
   const src = IMAGE_SRC[placeholder];
@@ -179,10 +182,12 @@ export function ImagePlaceholder({
           priority={priority}
           sizes={sizes}
           className={cn(
-            "object-cover",
+            fit === "contain" ? "object-contain" : "object-cover",
             kenBurns === "cinematic" && "animate-ken-burns",
             kenBurns === "subtle" && "animate-ken-burns-subtle",
-            kenBurns === "none" && "transition-transform duration-500 group-hover:scale-105",
+            kenBurns === "none" &&
+              fit !== "contain" &&
+              "transition-transform duration-500 group-hover:scale-105",
           )}
         />
       ) : (
