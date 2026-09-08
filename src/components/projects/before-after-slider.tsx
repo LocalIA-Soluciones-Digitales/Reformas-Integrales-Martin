@@ -46,34 +46,31 @@ export function BeforeAfterSlider({
       onPointerUp={() => setDragging(false)}
       onPointerLeave={() => setDragging(false)}
     >
-      <div className="flex h-full w-full bg-carbon-soft">
-        <div
-          className="relative h-full shrink-0 overflow-hidden"
-          style={{ width: `${position}%` }}
-        >
-          <ImagePlaceholder
-            placeholder={before}
-            showLabel={false}
-            fit="contain"
-            sizes="(min-width: 640px) 896px, 92vw"
-            className="h-full w-full"
-          />
-          <span className="absolute left-4 top-4 rounded-full bg-carbon/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur">
-            Antes
-          </span>
-        </div>
-        <div className="relative h-full min-w-0 flex-1 overflow-hidden">
-          <ImagePlaceholder
-            placeholder={after}
-            showLabel={false}
-            fit="contain"
-            sizes="(min-width: 640px) 896px, 92vw"
-            className="h-full w-full"
-          />
-          <span className="absolute right-4 top-4 rounded-full bg-carbon/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur">
-            Después
-          </span>
-        </div>
+      <div className="absolute inset-0">
+        <ImagePlaceholder
+          placeholder={after}
+          showLabel={false}
+          sizes="(min-width: 640px) 896px, 92vw"
+          className="h-full w-full"
+        />
+        <span className="absolute right-4 top-4 rounded-full bg-carbon/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur">
+          Después
+        </span>
+      </div>
+
+      <div
+        className="absolute inset-0 overflow-hidden"
+        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+      >
+        <ImagePlaceholder
+          placeholder={before}
+          showLabel={false}
+          sizes="(min-width: 640px) 896px, 92vw"
+          className="h-full w-full"
+        />
+        <span className="absolute left-4 top-4 rounded-full bg-carbon/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur">
+          Antes
+        </span>
       </div>
 
       <div
