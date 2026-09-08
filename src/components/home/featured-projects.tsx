@@ -38,6 +38,7 @@ export function FeaturedProjects() {
                   <ImagePlaceholder
                     placeholder={project.afterImage}
                     showLabel={false}
+                    sizes="(min-width: 1024px) 33vw, 100vw"
                     className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                   <div className="absolute left-4 top-4 flex gap-2">

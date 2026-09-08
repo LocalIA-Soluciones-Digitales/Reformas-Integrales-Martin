@@ -44,6 +44,7 @@ export function ProjectGallery() {
                   <ImagePlaceholder
                     placeholder={project.afterImage}
                     showLabel={false}
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-carbon/0 transition-colors duration-300 group-hover:bg-carbon/40">
