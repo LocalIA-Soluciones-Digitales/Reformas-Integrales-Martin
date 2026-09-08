@@ -21,7 +21,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex h-screen min-h-[720px] w-full items-end overflow-hidden bg-carbon"
+      className="relative z-0 flex h-screen min-h-[720px] w-full items-end overflow-hidden bg-carbon"
     >
       <div ref={imageRef} className="absolute inset-0 -z-10 h-[120%] w-full">
         <ImagePlaceholder

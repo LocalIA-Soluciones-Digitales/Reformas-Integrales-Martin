@@ -34,8 +34,14 @@ export default function ServiciosPage() {
         ])}
       />
 
-      <section className="bg-carbon pb-24 pt-40 text-white">
-        <div className="container-premium text-center">
+      <section className="relative z-0 overflow-hidden bg-carbon pb-24 pt-40 text-white">
+        <ImagePlaceholder
+          placeholder="team-working"
+          className="absolute inset-0 -z-10 h-full w-full"
+          showLabel={false}
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-carbon/85 via-carbon/80 to-carbon" />
+        <div className="container-premium relative text-center">
           <Badge variant="orange">Nuestros servicios</Badge>
           <h1 className="mx-auto mt-6 max-w-3xl text-balance font-display text-4xl font-bold tracking-tight sm:text-5xl">
             Un equipo. Todos los oficios. Una sola reforma.

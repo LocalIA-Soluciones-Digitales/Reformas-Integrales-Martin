@@ -61,6 +61,8 @@ export type ImagePlaceholderKey =
   | "commercial-space"
   | "team-working"
   | "before-after"
+  | "before-after-dated"
+  | "before-after-renovated"
   | "facade";
 
 export interface LeadPayload {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
+import { ImagePlaceholder } from "@/components/media/image-placeholder";
 import { ProjectGallery } from "@/components/projects/project-gallery";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -23,8 +24,14 @@ export default function ProyectosPage() {
         ])}
       />
 
-      <section className="bg-carbon pb-24 pt-40 text-white">
-        <div className="container-premium text-center">
+      <section className="relative z-0 overflow-hidden bg-carbon pb-24 pt-40 text-white">
+        <ImagePlaceholder
+          placeholder="before-after"
+          className="absolute inset-0 -z-10 h-full w-full"
+          showLabel={false}
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-carbon/85 via-carbon/80 to-carbon" />
+        <div className="container-premium relative text-center">
           <Badge variant="orange">Nuestro trabajo</Badge>
           <h1 className="mx-auto mt-6 max-w-2xl text-balance font-display text-4xl font-bold tracking-tight sm:text-5xl">
             Proyectos que reflejan nuestro nivel de exigencia
