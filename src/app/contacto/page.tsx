@@ -76,7 +76,9 @@ export default function ContactoPage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.1em] text-stone">
                   {card.label}
                 </p>
-                <p className="mt-1 font-medium text-carbon">{card.value}</p>
+                <p className="mt-1 break-words font-medium text-carbon">
+                  {card.value}
+                </p>
               </div>
             </div>
           );
