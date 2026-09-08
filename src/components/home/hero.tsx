@@ -27,6 +27,7 @@ export function Hero() {
         <ImagePlaceholder
           placeholder="hero-cinematic"
           className="h-full w-full"
+          priority
         />
       </div>
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-carbon via-carbon/50 to-carbon/20" />
