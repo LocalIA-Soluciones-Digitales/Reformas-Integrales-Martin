@@ -54,6 +54,7 @@ export function ProjectLightbox({ project, onOpenChange }: ProjectLightboxProps)
                   <ImagePlaceholder
                     key={`${image}-${i}`}
                     placeholder={image}
+                    showLabel={false}
                     className="aspect-square rounded-xl"
                   />
                 ))}

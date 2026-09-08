@@ -15,35 +15,39 @@ import type { ImagePlaceholderKey } from "@/types";
 
 const CONFIG: Record<
   ImagePlaceholderKey,
-  { icon: React.ElementType; from: string; via: string; to: string; label: string }
+  { icon: React.ElementType; from: string; via: string; to: string; label: string; code: string }
 > = {
   "hero-cinematic": {
     icon: Film,
     from: "from-carbon",
     via: "via-graphite",
     to: "to-carbon-soft",
-    label: "Reforma integral cinematográfica",
+    label: "Reforma integral",
+    code: "RM-00",
   },
   "kitchen-premium": {
     icon: ChefHat,
     from: "from-graphite",
     via: "via-carbon-soft",
     to: "to-orange-dark",
-    label: "Cocina de diseño premium",
+    label: "Cocina de diseño",
+    code: "RM-04",
   },
   "bathroom-premium": {
     icon: ShowerHead,
     from: "from-carbon-soft",
     via: "via-graphite",
     to: "to-graphite-light",
-    label: "Baño de diseño premium",
+    label: "Baño de diseño",
+    code: "RM-03",
   },
   "full-home": {
     icon: Home,
     from: "from-carbon",
     via: "via-graphite",
     to: "to-orange-dark",
-    label: "Reforma integral de vivienda",
+    label: "Vivienda integral",
+    code: "RM-01",
   },
   "living-room": {
     icon: Sofa,
@@ -51,34 +55,39 @@ const CONFIG: Record<
     via: "via-graphite",
     to: "to-carbon",
     label: "Salón contemporáneo",
+    code: "RM-05",
   },
   bedroom: {
     icon: BedDouble,
     from: "from-carbon-soft",
     via: "via-graphite-light",
     to: "to-carbon",
-    label: "Dormitorio reformado",
+    label: "Dormitorio",
+    code: "RM-06",
   },
   "commercial-space": {
     icon: Store,
     from: "from-graphite",
     via: "via-carbon",
     to: "to-orange-dark",
-    label: "Reforma de local comercial",
+    label: "Local comercial",
+    code: "RM-07",
   },
   "team-working": {
     icon: HardHat,
     from: "from-carbon",
     via: "via-graphite-light",
     to: "to-graphite",
-    label: "Equipo de profesionales en obra",
+    label: "Equipo en obra",
+    code: "RM-08",
   },
   "before-after": {
     icon: ImageIcon,
     from: "from-graphite",
     via: "via-carbon-soft",
     to: "to-carbon",
-    label: "Antes y después de la reforma",
+    label: "Antes y después",
+    code: "RM-09",
   },
   facade: {
     icon: Building2,
@@ -86,6 +95,7 @@ const CONFIG: Record<
     via: "via-graphite",
     to: "to-carbon",
     label: "Fachada rehabilitada",
+    code: "RM-02",
   },
 };
 
@@ -100,43 +110,61 @@ export function ImagePlaceholder({
   placeholder,
   className,
   iconClassName,
-  showLabel = false,
+  showLabel = true,
 }: ImagePlaceholderProps) {
-  const { icon: Icon, from, via, to, label } = CONFIG[placeholder];
+  const { icon: Icon, from, via, to, label, code } = CONFIG[placeholder];
 
   return (
     <div
       role="img"
-      aria-label={label}
+      aria-label={`${label} — lámina de proyecto pendiente de fotografía final`}
       className={cn(
-        "relative flex items-center justify-center overflow-hidden bg-gradient-to-br",
+        "group relative flex items-center justify-center overflow-hidden bg-gradient-to-br",
         from,
         via,
         to,
         className,
       )}
     >
-      <div
-        className="absolute inset-0 opacity-[0.08]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
-      <Icon
-        className={cn(
-          "relative z-10 h-10 w-10 text-white/40",
-          iconClassName,
-        )}
-        strokeWidth={1.25}
-      />
-      {showLabel ? (
-        <span className="absolute bottom-3 left-3 z-10 text-xs font-medium text-white/60">
-          {label}
-        </span>
-      ) : null}
+      <svg
+        className="absolute inset-0 h-full w-full opacity-[0.16]"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <pattern
+            id={`grid-${placeholder}`}
+            width="28"
+            height="28"
+            patternUnits="userSpaceOnUse"
+          >
+            <path d="M 28 0 L 0 0 0 28" fill="none" stroke="white" strokeWidth="1" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill={`url(#grid-${placeholder})`} />
+      </svg>
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-black/20" />
+
+      {/* Architectural corner crop marks */}
+      <span className="absolute left-4 top-4 h-4 w-4 border-l border-t border-white/40" />
+      <span className="absolute right-4 top-4 h-4 w-4 border-r border-t border-white/40" />
+      <span className="absolute bottom-4 left-4 h-4 w-4 border-b border-l border-white/40" />
+      <span className="absolute bottom-4 right-4 h-4 w-4 border-b border-r border-white/40" />
+
+      <div className="relative z-10 flex flex-col items-center gap-3 transition-transform duration-500 group-hover:scale-105">
+        <div className="grid h-16 w-16 place-items-center rounded-2xl border border-white/25 bg-white/5 backdrop-blur-sm">
+          <Icon className={cn("h-7 w-7 text-white/80", iconClassName)} strokeWidth={1.25} />
+        </div>
+        {showLabel ? (
+          <span className="text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-white/55">
+            {label}
+          </span>
+        ) : null}
+      </div>
+
+      <span className="absolute bottom-3 right-4 z-10 font-mono text-[10px] tracking-wider text-white/35">
+        {code}
+      </span>
     </div>
   );
 }

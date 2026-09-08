@@ -47,7 +47,7 @@ export function BeforeAfterSlider({
       onPointerLeave={() => setDragging(false)}
     >
       <div className="absolute inset-0">
-        <ImagePlaceholder placeholder={after} className="h-full w-full" />
+        <ImagePlaceholder placeholder={after} showLabel={false} className="h-full w-full" />
         <span className="absolute right-4 top-4 rounded-full bg-carbon/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur">
           Después
         </span>
@@ -57,7 +57,7 @@ export function BeforeAfterSlider({
         className="absolute inset-0 overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <ImagePlaceholder placeholder={before} className="h-full w-full" />
+        <ImagePlaceholder placeholder={before} showLabel={false} className="h-full w-full" />
         <span className="absolute left-4 top-4 rounded-full bg-carbon/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur">
           Antes
         </span>

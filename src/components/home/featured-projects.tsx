@@ -37,6 +37,7 @@ export function FeaturedProjects() {
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <ImagePlaceholder
                     placeholder={project.afterImage}
+                    showLabel={false}
                     className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                   <div className="absolute left-4 top-4 flex gap-2">

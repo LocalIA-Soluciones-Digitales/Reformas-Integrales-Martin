@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/home/hero";
 import { TrustIndicators } from "@/components/home/trust-indicators";
 import { ServicesPreview } from "@/components/home/services-preview";
+import { FloorPlan } from "@/components/home/floor-plan";
 import { BeforeAfter } from "@/components/home/before-after";
 import { FeaturedProjects } from "@/components/home/featured-projects";
 import { Process } from "@/components/home/process";
@@ -20,6 +21,7 @@ export default function Home() {
       <Hero />
       <TrustIndicators />
       <ServicesPreview />
+      <FloorPlan />
       <BeforeAfter />
       <FeaturedProjects />
       <Process />

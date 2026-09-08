@@ -43,6 +43,7 @@ export function ProjectGallery() {
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <ImagePlaceholder
                     placeholder={project.afterImage}
+                    showLabel={false}
                     className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-carbon/0 transition-colors duration-300 group-hover:bg-carbon/40">
