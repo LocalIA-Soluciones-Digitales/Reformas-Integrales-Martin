@@ -3,8 +3,10 @@ import { Hero } from "@/components/home/hero";
 import { TrustIndicators } from "@/components/home/trust-indicators";
 import { ServicesPreview } from "@/components/home/services-preview";
 import { FloorPlan } from "@/components/home/floor-plan";
+import { ImmersiveShowcase } from "@/components/home/immersive-showcase";
 import { BeforeAfter } from "@/components/home/before-after";
 import { FeaturedProjects } from "@/components/home/featured-projects";
+import { VideoGallery } from "@/components/home/video-gallery";
 import { Process } from "@/components/home/process";
 import { Testimonials } from "@/components/home/testimonials";
 import { Faq } from "@/components/home/faq";
@@ -22,8 +24,10 @@ export default function Home() {
       <TrustIndicators />
       <ServicesPreview />
       <FloorPlan />
+      <ImmersiveShowcase />
       <BeforeAfter />
       <FeaturedProjects />
+      <VideoGallery />
       <Process />
       <Testimonials />
       <Faq />

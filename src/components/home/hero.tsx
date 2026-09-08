@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, PlayCircle, ChevronDown } from "lucide-react";
 import { useGsapParallax } from "@/hooks/use-gsap-parallax";
-import { ImagePlaceholder } from "@/components/media/image-placeholder";
+import { VideoBackground } from "@/components/media/video-background";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { COMPANY } from "@/lib/constants";
@@ -24,11 +24,10 @@ export function Hero() {
       className="relative z-0 flex h-screen min-h-[720px] w-full items-end overflow-hidden bg-carbon"
     >
       <div ref={imageRef} className="absolute inset-0 -z-10 h-[120%] w-full">
-        <ImagePlaceholder
-          placeholder="hero-cinematic"
-          className="h-full w-full"
-          priority
-          kenBurns="cinematic"
+        <VideoBackground
+          src="/videos/hero-sunset-living.mp4"
+          poster="/videos/posters/hero-sunset-living.webp"
+          pauseOffscreen={false}
         />
       </div>
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-carbon via-carbon/50 to-carbon/20" />
