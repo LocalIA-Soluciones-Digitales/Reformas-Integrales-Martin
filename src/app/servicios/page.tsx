@@ -94,6 +94,7 @@ export default function ServiciosPage() {
                     placeholder={service.image}
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="aspect-[4/3] w-full rounded-3xl"
+                    kenBurns="subtle"
                   />
                 </Reveal>
               </div>

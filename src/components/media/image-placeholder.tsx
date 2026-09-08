@@ -120,6 +120,13 @@ interface ImagePlaceholderProps {
   showLabel?: boolean;
   priority?: boolean;
   sizes?: string;
+  /**
+   * Continuous slow zoom/pan on the photo. "cinematic" for large hero-style
+   * shots, "subtle" for editorial images that shouldn't dominate the page.
+   * Never combine with the before/after slider — the comparison needs a
+   * perfectly static image to stay accurate.
+   */
+  kenBurns?: "cinematic" | "subtle" | "none";
 }
 
 export function ImagePlaceholder({
@@ -129,6 +136,7 @@ export function ImagePlaceholder({
   showLabel = true,
   priority = false,
   sizes = "100vw",
+  kenBurns = "none",
 }: ImagePlaceholderProps) {
   const { icon: Icon, from, via, to, label, code } = CONFIG[placeholder];
   const src = IMAGE_SRC[placeholder];
@@ -152,7 +160,12 @@ export function ImagePlaceholder({
           fill
           priority={priority}
           sizes={sizes}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className={cn(
+            "object-cover",
+            kenBurns === "cinematic" && "animate-ken-burns",
+            kenBurns === "subtle" && "animate-ken-burns-subtle",
+            kenBurns === "none" && "transition-transform duration-500 group-hover:scale-105",
+          )}
         />
       ) : (
         <svg

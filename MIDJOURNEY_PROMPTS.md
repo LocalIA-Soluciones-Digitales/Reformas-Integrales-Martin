@@ -77,16 +77,78 @@ mismo negative prompt de Leonardo (Flux). Ejemplo para el hero:
 
 ---
 
-## Cómo integrar las imágenes generadas
+## Vídeos con Leonardo Motion
 
-1. Genera y descarga las imágenes con el prompt correspondiente.
-2. Optimízalas a formato `.webp` (recomendado, `<300KB` cada una).
-3. Colócalas en `public/images/` con nombres descriptivos, por ejemplo:
-   `public/images/hero-cinematic.webp`.
-4. Sustituye el componente `<ImagePlaceholder placeholder="hero-cinematic" />`
-   correspondiente por una etiqueta `next/image` apuntando al archivo real
-   (ver `src/components/media/image-placeholder.tsx` para la lista completa
-   de claves usadas en todo el sitio).
+Leonardo tiene una función **Motion** (imagen → vídeo, créditos gratis
+incluidos en el plan free) que anima una imagen ya generada en un clip corto
+(normalmente 4-5s). Es imagen-a-vídeo de un único fotograma de partida, no
+una cámara 3D real navegando por la estancia — así que un "recorrido
+inmersivo" completo no sale de un solo clip. La forma realista de conseguir
+ese efecto con herramientas gratuitas es: generar 3-4 clips cortos (uno por
+estancia) con movimiento de cámara hacia delante, y unirlos en un único
+vídeo. Si me pasas los clips descargados, te los edito/uno con ffmpeg y te
+los integro como vídeo de fondo en el hero o en una sección nueva "Recorre
+la reforma".
 
-Si me pasas las imágenes generadas, puedo optimizarlas e integrarlas
-directamente en el código por ti.
+### Cómo generar un clip en Leonardo Motion
+
+1. Genera primero la imagen fija con uno de los prompts de la tabla de
+   arriba (o usa una que ya tengas en `public/images/`).
+2. Ábrela y pulsa **Motion** (o "Animate this image").
+3. Pega el prompt de movimiento correspondiente (tabla abajo).
+4. Sube el **Motion Strength** a "Medio-Alto" — con "Bajo" apenas se mueve la
+   cámara; con "Muy alto" suele deformar los muebles.
+5. Descarga en MP4.
+
+### Prompt 1 — Loop ambiental del hero (sustituye/complementa el Ken Burns actual)
+
+> Slow, smooth cinematic camera drift forward into the room, subtle parallax between foreground furniture and background window light, golden hour light gently flickering, no camera shake, stable steady motion, seamless loop
+
+### Prompt 2 — Recorrido inmersivo, "entro caminando en la reforma" (el que pides)
+
+Genera esto sobre 3-4 imágenes distintas (por ejemplo `full-home`,
+`living-room`, `kitchen-premium`, `bathroom-premium`) para tener un clip por
+estancia, todos con el mismo prompt de movimiento para que el ritmo sea
+consistente al unirlos:
+
+> First-person walking POV camera slowly moving forward through the room, gentle steady dolly-in motion as if walking through the space, natural depth parallax between near and far objects, smooth and stable, no distortion, cinematic real estate walkthrough style, subtle motion blur
+
+### Prompt 3 — Detalle con movimiento (para redes sociales / reels)
+
+> Subtle slow-motion camera push-in on the kitchen island countertop, soft reflections moving on the stone surface, warm ambient light, cinematic macro depth of field, steady smooth motion
+
+### Si el resultado de Leonardo Motion no convence
+
+Es el límite normal de animar una sola imagen fija. Si en algún momento
+quieres un recorrido más largo y fluido, herramientas gratuitas con más
+control de cámara (aunque con menos crédito gratis que Leonardo) son
+**Pika Labs** y **Runway Gen-3** (plan free). No es necesario para lanzar la
+web — el hero con Ken Burns en código ya da sensación de movimiento sin
+depender de vídeo.
+
+---
+
+## Cómo integrar imágenes y vídeos generados
+
+Las 10 fotos de categoría (más el plano) ya están integradas en el código —
+`src/components/media/image-placeholder.tsx` las sirve automáticamente en
+cuanto existe el archivo `public/images/<clave>.webp` correspondiente, con
+`next/image` y, en el hero y las imágenes editoriales grandes, un efecto Ken
+Burns continuo (`kenBurns="cinematic" | "subtle"`).
+
+Para añadir un vídeo (por ejemplo, sustituir la imagen del hero por el clip
+del Prompt 1):
+
+1. Descarga el MP4 de Leonardo Motion y colócalo en `public/videos/`.
+2. Pásamelo (o dime que ya está ahí) y te cambio el hero para reproducir un
+   `<video autoPlay muted loop playsInline>` en vez de la imagen estática,
+   manteniendo el mismo degradado de legibilidad sobre el texto.
+
+Para añadir imágenes nuevas (variantes de `full-home`, `living-room`, etc.
+que se reutilizan mucho — ver conversación anterior sobre repetición):
+
+1. Genera y descarga la imagen con el prompt correspondiente.
+2. Optimízala a `.webp`, idealmente `<300KB`.
+3. Colócala en `public/images/` con un nombre descriptivo.
+4. Dímelo y actualizo `src/data/projects.ts` / `src/data/services.ts` para
+   que cada proyecto use su propia variante en vez de repetir la misma foto.
