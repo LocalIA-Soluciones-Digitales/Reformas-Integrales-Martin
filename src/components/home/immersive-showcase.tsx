@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import { VideoBackground } from "@/components/media/video-background";
 import { Badge } from "@/components/ui/badge";
 
@@ -21,13 +21,13 @@ export function ImmersiveShowcase() {
   const overlayOpacity = useTransform(
     scrollYProgress,
     [0, 0.3, 0.7, 1],
-    [0.65, 0.35, 0.35, 0.65],
+    [0.3, 0.12, 0.12, 0.3],
   );
 
   return (
     <section
       ref={sectionRef}
-      className="relative flex h-[85vh] min-h-[560px] w-full items-center overflow-hidden bg-carbon"
+      className="relative z-0 flex h-[85vh] min-h-[560px] w-full items-center overflow-hidden bg-carbon"
     >
       <motion.div style={{ scale }} className="absolute inset-0 -z-10">
         <VideoBackground
@@ -40,9 +40,10 @@ export function ImmersiveShowcase() {
         style={{ opacity: overlayOpacity }}
         className="absolute inset-0 -z-10 bg-carbon"
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-carbon via-carbon/10 to-carbon/40" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-carbon via-carbon/55 to-carbon/10 md:to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-carbon via-transparent to-carbon/20" />
 
-      <div className="container-premium relative z-10">
+      <div className="container-premium relative z-10 w-full">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,6 +71,20 @@ export function ImmersiveShowcase() {
           </Link>
         </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, delay: 0.15, ease: easeOutExpo }}
+        className="absolute bottom-10 right-6 z-10 hidden max-w-xs rounded-2xl border border-white/15 bg-carbon/50 p-5 backdrop-blur-md lg:block xl:right-20"
+      >
+        <Sparkles className="h-5 w-5 text-orange-light" />
+        <p className="mt-3 text-sm leading-relaxed text-white/80">
+          Encimeras en piedra sinterizada, electrodomésticos integrados y luz
+          cálida perimetral en cada isla que diseñamos.
+        </p>
+      </motion.div>
     </section>
   );
 }

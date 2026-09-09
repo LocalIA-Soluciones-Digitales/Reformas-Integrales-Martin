@@ -122,7 +122,7 @@ export function FloorPlan() {
   const inView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
-    <section className="overflow-hidden bg-cloud py-28">
+    <section className="overflow-hidden bg-cloud py-24">
       <div className="container-premium grid items-center gap-14 lg:grid-cols-2">
         <Reveal>
           <Badge variant="light">Diseño antes de construir</Badge>

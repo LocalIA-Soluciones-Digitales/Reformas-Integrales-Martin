@@ -6,8 +6,18 @@ import { Badge } from "@/components/ui/badge";
 
 export function BeforeAfter() {
   return (
-    <section className="bg-carbon py-28 text-white">
-      <div className="container-premium grid items-center gap-14 lg:grid-cols-2">
+    <section className="relative overflow-hidden bg-carbon py-24 text-white">
+      <div
+        className="absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+        }}
+      />
+      <div className="absolute -left-40 top-1/2 h-[32rem] w-[32rem] -translate-y-1/2 rounded-full bg-orange/20 blur-[140px]" />
+
+      <div className="container-premium relative grid items-center gap-14 lg:grid-cols-2">
         <Reveal>
           <Badge variant="orange">Resultados reales</Badge>
           <h2 className="mt-5 text-balance font-display text-4xl font-bold tracking-tight sm:text-5xl">

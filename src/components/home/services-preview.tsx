@@ -9,9 +9,9 @@ export function ServicesPreview() {
   const featured = SERVICES.slice(0, 6);
 
   return (
-    <section className="py-28">
+    <section className="py-24">
       <div className="container-premium">
-        <Reveal className="mx-auto mb-16 max-w-2xl text-center">
+        <Reveal className="mx-auto mb-14 max-w-2xl text-center">
           <Badge variant="light">Servicios</Badge>
           <h2 className="mt-5 text-balance font-display text-4xl font-bold tracking-tight text-carbon sm:text-5xl">
             Todo lo que necesita tu reforma, bajo un mismo equipo

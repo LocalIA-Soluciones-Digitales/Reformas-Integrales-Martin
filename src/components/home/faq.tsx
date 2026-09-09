@@ -12,7 +12,7 @@ import { getFaqSchema } from "@/lib/seo/schema";
 
 export function Faq() {
   return (
-    <section className="py-28">
+    <section className="py-24">
       <JsonLd data={getFaqSchema(FAQ_ITEMS)} />
       <div className="container-premium grid gap-14 lg:grid-cols-[1fr_1.4fr]">
         <Reveal>

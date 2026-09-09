@@ -4,9 +4,9 @@ import { Badge } from "@/components/ui/badge";
 
 export function Process() {
   return (
-    <section className="py-28">
+    <section className="py-24">
       <div className="container-premium">
-        <Reveal className="mx-auto mb-20 max-w-2xl text-center">
+        <Reveal className="mx-auto mb-16 max-w-2xl text-center">
           <Badge variant="light">Cómo trabajamos</Badge>
           <h2 className="mt-5 text-balance font-display text-4xl font-bold tracking-tight text-carbon sm:text-5xl">
             Un proceso claro, de principio a fin

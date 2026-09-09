@@ -9,9 +9,9 @@ export function FeaturedProjects() {
   const featured = PROJECTS.slice(0, 3);
 
   return (
-    <section className="bg-mist py-28">
+    <section className="bg-mist py-24">
       <div className="container-premium">
-        <Reveal className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <Reveal className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
             <Badge variant="light">Proyectos destacados</Badge>
             <h2 className="mt-5 max-w-xl text-balance font-display text-4xl font-bold tracking-tight text-carbon sm:text-5xl">

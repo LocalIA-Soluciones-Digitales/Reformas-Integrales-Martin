@@ -7,7 +7,7 @@ import { formatPhoneHref } from "@/lib/utils";
 
 export function CtaFinal() {
   return (
-    <section className="relative overflow-hidden bg-orange py-24 text-white">
+    <section className="relative overflow-hidden bg-orange py-20 text-white">
       <div
         className="absolute inset-0 opacity-10"
         style={{

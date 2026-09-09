@@ -25,7 +25,7 @@ const IMAGE_SRC: Partial<Record<ImagePlaceholderKey, string>> = {
   "team-working": "/images/team-working.webp",
   "before-after": "/images/before-after.webp",
   "before-after-dated": "/images/before-after-dated.webp",
-  "before-after-renovated": "/images/before-after-renovated.webp",
+  "before-after-renovated": "/images/bathroom-premium.webp",
   facade: "/images/facade.webp",
 };
 
@@ -110,15 +110,15 @@ const CONFIG: Record<
     from: "from-graphite",
     via: "via-carbon-soft",
     to: "to-carbon",
-    label: "Salón antes de la reforma",
+    label: "Baño antes de la reforma",
     code: "RM-09A",
   },
   "before-after-renovated": {
-    icon: Sofa,
+    icon: ShowerHead,
     from: "from-graphite-light",
     via: "via-graphite",
     to: "to-carbon",
-    label: "Salón después de la reforma",
+    label: "Baño después de la reforma",
     code: "RM-09B",
   },
   facade: {

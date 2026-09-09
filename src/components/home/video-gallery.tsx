@@ -19,9 +19,9 @@ const CLIPS = [
 
 export function VideoGallery() {
   return (
-    <section className="bg-cloud py-28">
+    <section className="bg-cloud py-24">
       <div className="container-premium">
-        <Reveal className="mx-auto mb-16 max-w-2xl text-center">
+        <Reveal className="mx-auto mb-14 max-w-2xl text-center">
           <Badge variant="light" className="mx-auto">
             Recorridos en vídeo
           </Badge>
