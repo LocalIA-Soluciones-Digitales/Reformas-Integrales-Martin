@@ -25,6 +25,16 @@ export function Navbar() {
     setOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (open) {
+      const original = document.documentElement.style.overflow;
+      document.documentElement.style.overflow = "hidden";
+      return () => {
+        document.documentElement.style.overflow = original;
+      };
+    }
+  }, [open]);
+
   return (
     <header
       className={cn(
@@ -90,36 +100,53 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-white/10 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-x-0 top-20 bottom-0 z-[60] overflow-y-auto bg-carbon md:hidden"
           >
-            <div className="container-premium flex flex-col gap-1 py-6">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "rounded-lg px-3 py-3 text-base font-medium text-white/80 hover:bg-white/5 hover:text-white",
-                    pathname === link.href && "text-white",
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <div className="mt-4 flex flex-col gap-3">
+            <div className="flex min-h-full flex-col">
+              <nav className="container-premium flex flex-1 flex-col gap-1 pt-8">
+                {NAV_LINKS.map((link, i) => (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.05 + i * 0.04, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "flex items-center justify-between border-b border-white/10 py-4 text-lg font-semibold text-white/80 transition-colors hover:text-white",
+                        pathname === link.href && "text-orange",
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 + NAV_LINKS.length * 0.04, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="container-premium flex flex-col gap-4 border-t border-white/10 bg-carbon/60 py-6"
+              >
                 <a
                   href={formatPhoneHref(COMPANY.phone)}
-                  className="flex items-center gap-2 px-3 text-sm text-white/80"
+                  className="flex items-center gap-3 text-base font-medium text-white/80 transition-colors hover:text-white"
                 >
-                  <Phone className="h-4 w-4" /> {COMPANY.phoneDisplay}
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/10">
+                    <Phone className="h-4 w-4 text-orange" />
+                  </span>
+                  {COMPANY.phoneDisplay}
                 </a>
-                <Button asChild className="mx-3">
+                <Button asChild size="lg" className="w-full">
                   <Link href="/contacto">Solicitar presupuesto</Link>
                 </Button>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         )}
