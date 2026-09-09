@@ -77,24 +77,32 @@ export default function ContactoPage() {
       <section className="container-premium -mt-12 grid gap-4 pb-4 sm:grid-cols-2 lg:grid-cols-4">
         {CONTACT_CARDS.map((card) => {
           const Content = (
-            <div className="flex h-full flex-col gap-3 rounded-2xl border border-line bg-white p-6 shadow-[0_20px_45px_-25px_rgba(0,0,0,0.25)] transition-transform hover:-translate-y-1">
-              <card.icon className="h-5 w-5 text-orange" />
-              <div>
+            <div className="flex h-full min-h-[128px] flex-col gap-3 rounded-2xl border border-line bg-white p-6 shadow-[0_20px_45px_-25px_rgba(0,0,0,0.25)] transition-transform hover:-translate-y-1">
+              <card.icon className="h-5 w-5 shrink-0 text-orange" />
+              <div className="min-w-0">
                 <p className="text-xs font-semibold uppercase tracking-[0.1em] text-stone">
                   {card.label}
                 </p>
-                <p className="mt-1 break-words font-medium text-carbon">
+                <p className="mt-1.5 break-words text-sm font-medium leading-relaxed text-carbon">
                   {card.value}
                 </p>
               </div>
             </div>
           );
           return card.href ? (
-            <a key={card.label} href={card.href} target={card.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+            <a
+              key={card.label}
+              href={card.href}
+              target={card.href.startsWith("http") ? "_blank" : undefined}
+              rel="noreferrer"
+              className="block h-full"
+            >
               {Content}
             </a>
           ) : (
-            <div key={card.label}>{Content}</div>
+            <div key={card.label} className="h-full">
+              {Content}
+            </div>
           );
         })}
       </section>
