@@ -7,7 +7,6 @@ import { ArrowRight, PlayCircle, ChevronDown } from "lucide-react";
 import { useGsapParallax } from "@/hooks/use-gsap-parallax";
 import { VideoBackground } from "@/components/media/video-background";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { COMPANY } from "@/lib/constants";
 
 const easeOutExpo = [0.16, 1, 0.3, 1] as const;
@@ -33,20 +32,10 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-carbon via-carbon/50 to-carbon/20" />
 
       <div className="container-premium relative z-10 flex w-full flex-col gap-5 pb-16 pt-28 sm:gap-8 sm:pb-28 sm:pt-40">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: easeOutExpo }}
-        >
-          <Badge variant="orange" className="bg-orange/15 text-orange-light">
-            Reformas premium en Barakaldo · Bizkaia
-          </Badge>
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: easeOutExpo }}
+          transition={{ duration: 0.7, ease: easeOutExpo }}
           className="max-w-4xl text-balance font-display text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl"
         >
           Transformamos espacios.
