@@ -21,7 +21,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-0 flex h-screen min-h-[720px] w-full items-end overflow-hidden bg-carbon"
+      className="relative z-0 flex min-h-screen w-full items-end overflow-hidden bg-carbon"
     >
       <div ref={imageRef} className="absolute inset-0 -z-10 h-[120%] w-full">
         <VideoBackground
@@ -32,7 +32,7 @@ export function Hero() {
       </div>
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-carbon via-carbon/50 to-carbon/20" />
 
-      <div className="container-premium relative z-10 flex w-full flex-col gap-8 pb-28 pt-40">
+      <div className="container-premium relative z-10 flex w-full flex-col gap-5 pb-16 pt-28 sm:gap-8 sm:pb-28 sm:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
