@@ -31,7 +31,24 @@ export function VideoBackground({
       return;
     }
 
-    if (!pauseOffscreen) return;
+    // Restart a hair before the true end instead of relying on the native
+    // `loop` attribute: waiting for the end-of-stream/seek-back cycle is what
+    // produces the visible black flash on loop in most browsers.
+    const LOOP_MARGIN = 0.2;
+    const handleTimeUpdate = () => {
+      if (
+        video.duration &&
+        video.currentTime >= video.duration - LOOP_MARGIN
+      ) {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      }
+    };
+    video.addEventListener("timeupdate", handleTimeUpdate);
+
+    if (!pauseOffscreen) {
+      return () => video.removeEventListener("timeupdate", handleTimeUpdate);
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -45,7 +62,10 @@ export function VideoBackground({
     );
 
     observer.observe(video);
-    return () => observer.disconnect();
+    return () => {
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+      observer.disconnect();
+    };
   }, [pauseOffscreen]);
 
   return (
@@ -55,9 +75,8 @@ export function VideoBackground({
       poster={poster}
       autoPlay
       muted
-      loop
       playsInline
-      preload="metadata"
+      preload="auto"
     >
       <source src={src} type="video/mp4" />
     </video>
