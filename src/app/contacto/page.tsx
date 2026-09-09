@@ -108,13 +108,13 @@ export default function ContactoPage() {
       </section>
 
       <section className="container-premium grid gap-12 py-20 lg:grid-cols-[1.2fr_1fr]">
-        <div>
+        <div className="min-w-0">
           <h2 className="mb-6 font-display text-2xl font-semibold text-carbon">
             Formulario de contacto
           </h2>
           <ContactForm />
         </div>
-        <div>
+        <div className="min-w-0">
           <h2 className="mb-6 font-display text-2xl font-semibold text-carbon">
             Calcula tu presupuesto
           </h2>
