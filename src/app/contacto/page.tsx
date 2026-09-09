@@ -74,7 +74,7 @@ export default function ContactoPage() {
         </div>
       </section>
 
-      <section className="container-premium -mt-12 grid gap-4 pb-4 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="container-premium relative z-10 -mt-12 grid gap-4 pb-4 sm:grid-cols-2 lg:grid-cols-4">
         {CONTACT_CARDS.map((card) => {
           const Content = (
             <div className="flex h-full min-h-[128px] flex-col gap-3 rounded-2xl border border-line bg-white p-6 shadow-[0_20px_45px_-25px_rgba(0,0,0,0.25)] transition-transform hover:-translate-y-1">
