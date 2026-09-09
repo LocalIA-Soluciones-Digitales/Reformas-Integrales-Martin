@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { motion } from "framer-motion";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -47,11 +46,7 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-line bg-cloud px-8 py-16 text-center"
-      >
+      <div className="flex h-full flex-col items-center justify-center gap-4 rounded-3xl border border-line bg-white p-8 text-center">
         <CheckCircle2 className="h-12 w-12 text-orange" />
         <h3 className="font-display text-2xl font-semibold text-carbon">
           ¡Mensaje enviado!
@@ -63,12 +58,15 @@ export function ContactForm() {
         <Button variant="outline" onClick={() => setStatus("idle")}>
           Enviar otra consulta
         </Button>
-      </motion.div>
+      </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-5 rounded-3xl border border-line bg-white p-8"
+    >
       <input
         type="text"
         name="honeypot"
@@ -105,7 +103,7 @@ export function ContactForm() {
         <select
           id="service"
           name="service"
-          className="h-13 w-full rounded-xl border border-line bg-white px-4 text-sm text-carbon focus-visible:border-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange/20"
+          className="h-13 w-full rounded-xl border border-line bg-cloud px-4 text-sm text-carbon transition-colors hover:border-carbon/25 focus-visible:border-orange focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange/20"
         >
           <option value="">Selecciona una opción</option>
           {SERVICES.map((service) => (
