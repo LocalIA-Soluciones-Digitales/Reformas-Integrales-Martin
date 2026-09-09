@@ -53,8 +53,10 @@ export function BeforeAfterSlider({
           sizes="(min-width: 640px) 896px, 92vw"
           className="h-full w-full"
         />
-        <span className="absolute right-4 top-4 rounded-full bg-carbon/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur">
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
+        <span className="absolute right-5 top-5 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white">
           Después
+          <span className="h-px w-5 bg-orange" />
         </span>
       </div>
 
@@ -68,16 +70,18 @@ export function BeforeAfterSlider({
           sizes="(min-width: 640px) 896px, 92vw"
           className="h-full w-full"
         />
-        <span className="absolute left-4 top-4 rounded-full bg-carbon/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur">
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
+        <span className="absolute left-5 top-5 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white">
+          <span className="h-px w-5 bg-orange" />
           Antes
         </span>
       </div>
 
       <div
-        className="absolute inset-y-0 z-10 w-0.5 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.1)]"
+        className="absolute inset-y-0 z-10 w-px bg-white/80"
         style={{ left: `${position}%` }}
       >
-        <div className="absolute left-1/2 top-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-carbon shadow-lg">
+        <div className="absolute left-1/2 top-1/2 grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/40 bg-carbon/40 text-white backdrop-blur-md shadow-lg transition-colors group-hover:border-orange group-hover:text-orange">
           <GripVertical className="h-4 w-4" />
         </div>
       </div>
